@@ -3,7 +3,6 @@ import { push, onValue, update, child, remove } from "firebase/database";
 import { Task } from "./models";
 import { applyFilters, FilterOptions } from "./filters";
 
-// Exporteras så att main.ts kan uppdatera filtren
 export const currentFilters: FilterOptions = {
   role: "all",
   alpha: "none",
@@ -59,10 +58,21 @@ export function renderTasks() {
     for (const task of filtered) {
       const taskDiv = document.createElement("div");
       taskDiv.className = "task";
+
+      const formattedTime = task.timestamp
+        ? new Date(task.timestamp).toLocaleString("sv-SE", {
+            dateStyle: "short",
+            timeStyle: "short"
+          })
+        : "Okänt datum";
+
       taskDiv.innerHTML = `
         <strong>${task.title}</strong><br/>
         ${task.description}<br/>
-        <div class="meta">${task.assignedName} – ${task.role}</div>
+        <div class="meta">
+          ${task.assignedName} – ${task.role}<br/>
+          Skapad: ${formattedTime}
+        </div>
       `;
 
       if (task.status === "new") {
@@ -110,3 +120,4 @@ function getColumnByStatus(status: string): HTMLElement {
       return document.getElementById("new-tasks")!;
   }
 }
+
