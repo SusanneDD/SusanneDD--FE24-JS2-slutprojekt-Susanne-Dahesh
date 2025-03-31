@@ -1,0 +1,177 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f0f0f;
+  color: #f1f1f1;
+  margin: 0;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #f9d342;
+  margin-bottom: 0.5rem;
+}
+
+section {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+input, textarea, select, button {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #f9d342;
+  color: #000;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ffe156;
+}
+
+/* === Kanban-layout === */
+.kanban {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1 1 30%;
+  min-width: 280px;
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.1);
+}
+
+.column h3 {
+  border-bottom: 2px solid #f9d342;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.task {
+  background: linear-gradient(135deg, #2c2c2c, #1c1c1c);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #f9d342;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.task:hover {
+  transform: scale(1.02);
+}
+
+.task .meta {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin-top: 0.5rem;
+}
+
+/* === Filterknappar === */
+#filters div {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+#filters button {
+  flex: 1;
+  min-width: 100px;
+  background-color: #2e2e2e;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+}
+
+#filters button:hover {
+  background-color: #444;
+}
+
+/* === Medlemslista === */
+#member-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+#member-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #333;
+}
+
+#member-list button {
+  background: none;
+  color: #e74c3c;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.3s ease;
+}
+
+#member-list button:hover {
+  color: #ff6b6b;
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* === Responsivitet === */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .kanban {
+    flex-direction: column;
+  }
+
+  .column {
+    flex: 1 1 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  #filters div {
+    flex-direction: column;
+  }
+
+  #filters button {
+    width: 100%;
+  }
+
+  input, textarea, select, button {
+    font-size: 0.95rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+}

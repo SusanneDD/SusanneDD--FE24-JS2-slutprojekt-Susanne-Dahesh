@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SCRUMBoard</title>
+  <link rel="stylesheet" href="./styles/style.css"/>
+  <script type="module" src="./src/main.ts" defer></script>
+</head>
+<body>
+  <h1>ScrumBOARD</h1>
+
+  <section id="add-member">
+    <h2>Lägg till medlem</h2>
+    <input type="text" id="member-name" placeholder="Namn" />
+    <select id="member-role">
+      <option value="UX">UX</option>
+      <option value="Frontend">Frontend</option>
+      <option value="Backend">Backend</option>
+    </select>
+    <button id="add-member-btn">Lägg till</button>
+    <ul id="member-list"></ul>
+  </section>
+
+  <section id="add-task">
+    <h2>Lägg till uppgift</h2>
+    <input type="text" id="task-title" placeholder="Titel" />
+    <textarea id="task-desc" placeholder="Beskrivning"></textarea>
+    <select id="task-role">
+      <option value="UX">UX</option>
+      <option value="Frontend">Frontend</option>
+      <option value="Backend">Backend</option>
+    </select>
+    <select id="task-member"></select>
+    <button id="add-task-btn">Skapa uppgift</button>
+  </section>
+
+  <section id="filters">
+    <h2>Filtrering</h2>
+    <div>
+      <button class="filter-role" data-role="all">Alla</button>
+      <button class="filter-role" data-role="UX">UX</button>
+      <button class="filter-role" data-role="Frontend">Frontend</button>
+      <button class="filter-role" data-role="Backend">Backend</button>
+    </div>
+    <div>
+      <button class="filter-alpha" data-sort="az">A-Ö</button>
+      <button class="filter-alpha" data-sort="za">Ö-A</button>
+    </div>
+    <div>
+      <button class="filter-date" data-sort="newest">Nyast</button>
+      <button class="filter-date" data-sort="oldest">Äldst</button>
+    </div>
+  </section>
+
+  <section class="kanban">
+    <div class="column" id="new-tasks">
+      <h3>Ny</h3>
+    </div>
+    <div class="column" id="in-progress-tasks">
+      <h3>Under arbete</h3>
+    </div>
+    <div class="column" id="done-tasks">
+      <h3>Slutförda</h3>
+    </div>
+  </section>
+</body>
+</html>
