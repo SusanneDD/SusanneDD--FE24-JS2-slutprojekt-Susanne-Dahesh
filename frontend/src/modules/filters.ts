@@ -1,4 +1,3 @@
-// filters.ts
 import { Task } from "./models";
 
 export type FilterOptions = {
