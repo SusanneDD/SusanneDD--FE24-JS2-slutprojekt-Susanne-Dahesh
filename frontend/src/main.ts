@@ -33,5 +33,5 @@ document.querySelectorAll(".filter-date").forEach(btn => {
   });
 });
 
-// === Första rendering ===
+
 renderTasks();
