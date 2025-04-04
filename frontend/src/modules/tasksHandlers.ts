@@ -1,7 +1,7 @@
 import { tasksRef } from "./firebase";
 import { push, onValue, update, child, remove } from "firebase/database";
-import { Task } from "./models";
 import { applyFilters, FilterOptions } from "./filters";
+import { TaskClass, } from "./models";
 
 export const currentFilters: FilterOptions = {
   role: "all",
@@ -23,15 +23,9 @@ export function setupTaskListeners() {
       return;
     }
 
-    push(tasksRef, {
-      title,
-      description: desc,
-      role,
-      assigned,
-      assignedName,
-      status: "new",
-      timestamp: Date.now()
-    });
+    const newTask = new TaskClass(title, desc, role, assigned, assignedName);
+
+    push(tasksRef, newTask);
 
     // Rensa inputfält
     (document.getElementById("task-title") as HTMLInputElement).value = "";
@@ -41,10 +35,10 @@ export function setupTaskListeners() {
 
 export function renderTasks() {
   onValue(tasksRef, snapshot => {
-    const allTasks: Task[] = [];
+    const allTasks: TaskClass[] = [];
 
     snapshot.forEach(childSnap => {
-      const task = childSnap.val() as Task;
+      const task = childSnap.val() as TaskClass;
       task.key = childSnap.key!;
       allTasks.push(task);
     });
@@ -120,4 +114,5 @@ function getColumnByStatus(status: string): HTMLElement {
       return document.getElementById("new-tasks")!;
   }
 }
+
 
